@@ -1,0 +1,19 @@
+{
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "plugin.http.request": {
+        "source": {
+            "type": "git",
+            "url": "git://github.com/wf9a5m75/phonegap-http-request.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}
