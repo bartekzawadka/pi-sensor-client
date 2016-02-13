@@ -5,6 +5,18 @@
   font-size: 14px;
 }
 
-.custom-item-note.data-failed{
-  color: red;
+.custom-item-note.high-value{
+  color: orangered;
+}
+
+.update-failed-notification {
+  border-radius:4px;
+  -webkit-border-radius:4px;
+  color:#FFFFFF;
+  font-size:12px;
+  margin:0px 30px;
+  padding:2px 0px;
+  text-align: center;
+  background-color: darkred;
+  display:none;
 }

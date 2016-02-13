@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
 
-.run(function($ionicPlatform, Settings, SensorsInfoService, $http) {
+.run(function($ionicPlatform, Settings, SensorsUpdater, $http) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,40 +20,39 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       StatusBar.styleDefault();
     }
 
-    intervalAction();
+    SensorsUpdater.updateSensors();
 
     Settings.getInterval(function(interval){
       var miliseconds = interval * 1000;
 
-        window.setInterval(intervalAction, miliseconds);
+        window.setInterval(SensorsUpdater.updateSensors, miliseconds);
     });
+
   });
 
-  var intervalAction = function(){
-
-    Settings.getAddress(function (address) {
-
-      $http.get(address).then(function(value){
-        SensorsInfoService.notify(value.data);
-        setColorsForUpdates(false);
-
-      }, function(error){
-        console.log(JSON.stringify(error));
-        setColorsForUpdates(true);
-      })
-    });
-  };
-
-  var setColorsForUpdates = function(isError){
-      var items = document.querySelectorAll('.custom-item-note');
-      for(var i=0;i<items.length;i++){
-        if(isError){
-          items[i].className = 'custom-item-note data-failed';
-        }else{
-          items[i].className = 'custom-item-note';
-        }
-      }
-  };
+  //var intervalAction = function(){
+  //
+  //  Settings.getAddress(function (address) {
+  //
+  //    $http.get(address).then(function(value){
+  //      SensorsInfoService.notify(value.data);
+  //      updateNotifications(false);
+  //
+  //    }, function(error){
+  //      console.log(JSON.stringify(error));
+  //      updateNotifications(true);
+  //    })
+  //  });
+  //};
+  //
+  //var updateNotifications = function(isError){
+  //  var notifier = document.getElementById("update-failed-notifier");
+  //  if(isError){
+  //    notifier.setAttribute('style', 'display: block');
+  //  }else{
+  //    notifier.setAttribute('style', 'display: none');
+  //  }
+  //};
 })
 
 .config(function($stateProvider, $urlRouterProvider) {

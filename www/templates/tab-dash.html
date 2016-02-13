@@ -8,16 +8,28 @@
         </div>
         <div class="item">
           Temperatura
-          <span class="custom-item-note">
-            {{item.temperature}}&deg;C
+          <span ng-class="item.temperature >= 40 ? 'custom-item-note high-value' : 'custom-item-note'">
+            {{item.temperature}}&deg;C <span ng-if="item.temperature >= 40"> ! </span>
           </span>
         </div>
         <div class="item">
           Wilgotność
-            <span class="custom-item-note">
-              {{item.humidity}}%
+            <span ng-class="item.humidity >= 50 ? 'custom-item-note high-value' : 'custom-item-note'">
+              {{item.humidity}}% <span ng-if="item.humidity >= 50"> ! </span>
             </span>
         </div>
     </div>
+
+    <div id="notifiers">
+      <p id="update-failed-notifier" class="update-failed-notification">Błąd pobierania</p>
+    </div>
+
+    <div ng-if="lastUpdateTimestamp">
+      <h5>Ostatnia aktualizacja: {{lastUpdateTimestamp}}</h5>
+    </div>
+
+      <button class="button button-block button-positive" ng-click="refreshSensors()">
+        Odśwież
+      </button>
   </ion-content>
 </ion-view>

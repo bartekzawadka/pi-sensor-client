@@ -1,10 +1,16 @@
 angular.module('starter.controllers', ['ngCordova'])
 
-.controller('DashCtrl', function($scope, SensorsInfoService) {
-  $scope.sensors = SensorsInfoService.getLast();
+.controller('DashCtrl', function($scope, SensorsInfoService, SensorsUpdater) {
+  $scope.sensors = SensorsInfoService.getLastSensorsData();
+
   SensorsInfoService.subscribe($scope, function(){
-    $scope.sensors = SensorsInfoService.getLast();
+    $scope.sensors = SensorsInfoService.getLastSensorsData();
+    $scope.lastUpdateTimestamp = SensorsInfoService.getLastUpdateTimestamp();
   });
+
+  $scope.refreshSensors = function(){
+    SensorsUpdater.updateSensors();
+  };
 })
 
 .controller('SettingsCtrl', function($scope, Settings) {
