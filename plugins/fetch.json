@@ -1,17 +1,56 @@
 {
-    "cordova-plugin-whitelist": {
+    "cordova-plugin-device": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-whitelist@1"
+            "id": "cordova-plugin-device@~1.1.1"
         },
         "is_top_level": true,
         "variables": {}
     },
-    "plugin.http.request": {
+    "cordova-plugin-console": {
         "source": {
-            "type": "git",
-            "url": "git://github.com/wf9a5m75/phonegap-http-request.git",
-            "subdir": "."
+            "type": "registry",
+            "id": "cordova-plugin-console@~1.0.2"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@~1.2.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-splashscreen": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-splashscreen@~3.1.0"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-statusbar": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-statusbar@~2.1.0"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "ionic-plugin-keyboard": {
+        "source": {
+            "type": "registry",
+            "id": "ionic-plugin-keyboard"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-app-preferences": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-app-preferences"
         },
         "is_top_level": true,
         "variables": {}

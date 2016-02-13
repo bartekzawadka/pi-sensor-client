@@ -7,11 +7,26 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+        "cordova-plugin-app-preferences": {
+            "PACKAGE_NAME": "com.ionicframework.example443926"
         },
-        "plugin.http.request": {
-            "PACKAGE_NAME": "pi.sensor.client"
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.ionicframework.example443926"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.example443926"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.ionicframework.example443926"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.ionicframework.example443926"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.example443926"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.example443926"
         }
     },
     "dependent_plugins": {}

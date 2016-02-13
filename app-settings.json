@@ -1,0 +1,17 @@
+[
+    {
+        "type":"group",
+        "title":"Common",
+        "items":[{
+			"title":"Adres usługi",
+			"type":"textfield",
+			"key":"address",
+          "default": "http://localhost:888/get_temp_hum"
+		}, {
+      "title": "Interwał odczytu [s]",
+      "type": "textfield",
+      "key": "interval",
+      "default": "30"
+      }]
+    }
+]
