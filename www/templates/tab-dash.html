@@ -2,27 +2,22 @@
   <ion-content class="padding">
     <h4>Odczyt temperatury i wilgotności</h4>
 
-    <div class="list" ng-repeat="item in sensors">
+    <div id="sensors-list" class="list" ng-repeat="item in sensors">
         <div class="item item-divider">
           Czujnik {{$index+1}}
         </div>
         <div class="item">
           Temperatura
-          <span class="item-note">
+          <span class="custom-item-note">
             {{item.temperature}}&deg;C
           </span>
         </div>
         <div class="item">
           Wilgotność
-            <span class="item-note">
+            <span class="custom-item-note">
               {{item.humidity}}%
             </span>
         </div>
-    </div>
-
-    <div id="notifier" class="blink">
-      <p class="event waiting">Aktualizacja wskazań...</p>
-      <p class="event error">Błąd pobierania</p>
     </div>
   </ion-content>
 </ion-view>

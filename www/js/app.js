@@ -20,6 +20,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       StatusBar.styleDefault();
     }
 
+    intervalAction();
+
     Settings.getInterval(function(interval){
       var miliseconds = interval * 1000;
 
@@ -28,30 +30,29 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 
   var intervalAction = function(){
-    var parentElement = document.getElementById('notifier');
-    var waitingElement = parentElement.querySelector('.waiting');
-    var errorElement = parentElement.querySelector('.error');
-
-    errorElement.setAttribute('style', 'display:none');
-    waitingElement.setAttribute('style', 'display:block');
 
     Settings.getAddress(function (address) {
 
-      var req = {
-        method: 'GET',
-        url: address
-      };
-
-      $http(req).then(function(value){
+      $http.get(address).then(function(value){
         SensorsInfoService.notify(value.data);
-        errorElement.setAttribute('style', 'display:none');
-        waitingElement.setAttribute('style', 'display:none');
+        setColorsForUpdates(false);
+
       }, function(error){
-        console.log(error);
-        errorElement.setAttribute('style', 'display:block');
-        waitingElement.setAttribute('style', 'display:none');
+        console.log(JSON.stringify(error));
+        setColorsForUpdates(true);
       })
     });
+  };
+
+  var setColorsForUpdates = function(isError){
+      var items = document.querySelectorAll('.custom-item-note');
+      for(var i=0;i<items.length;i++){
+        if(isError){
+          items[i].className = 'custom-item-note data-failed';
+        }else{
+          items[i].className = 'custom-item-note';
+        }
+      }
   };
 })
 
@@ -81,25 +82,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   })
-  //
-  //.state('tab.chats', {
-  //    url: '/chats',
-  //    views: {
-  //      'tab-chats': {
-  //        templateUrl: 'templates/tab-chats.html',
-  //        controller: 'ChatsCtrl'
-  //      }
-  //    }
-  //  })
-  //  .state('tab.chat-detail', {
-  //    url: '/chats/:chatId',
-  //    views: {
-  //      'tab-chats': {
-  //        templateUrl: 'templates/chat-detail.html',
-  //        controller: 'ChatDetailCtrl'
-  //      }
-  //    }
-  //  })
 
   .state('tab.settings', {
     url: '/settings',
@@ -116,8 +98,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
 })
 
-.config(['$httpProvider', function($httpProvider) {
-  $httpProvider.defaults.useXDomain = true;
-  delete $httpProvider.defaults.headers.common['X-Requested-With'];
-}
-]);
+  .config(function ($httpProvider) {
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  });

@@ -8,7 +8,7 @@ angular.module('starter.services', ['ngCordova'])
       $window.plugins.appPreferences.fetch(function(value){
         if(okCallback) {
           if(!value || value == null){
-            value = "http://localhost:888/get_temp_hum"
+            value = "http://barser.com:888/get_temp_hum"
           }
           okCallback(value);
         }
