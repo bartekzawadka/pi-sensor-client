@@ -6,7 +6,7 @@
 			"title":"Adres usługi",
 			"type":"textfield",
 			"key":"address",
-          "default": "http://localhost:888/get_temp_hum"
+          "default": "http://barser:888/get_temp_hum"
 		}, {
       "title": "Interwał odczytu [s]",
       "type": "textfield",

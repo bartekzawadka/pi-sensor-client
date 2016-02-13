@@ -23,40 +23,36 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     Settings.getInterval(function(interval){
       var miliseconds = interval * 1000;
 
-        window.setInterval(function() {
-
-          var parentElement = document.getElementById('notifier');
-          var waitingElement = parentElement.querySelector('.waiting');
-          var errorElement = parentElement.querySelector('.error');
-
-          errorElement.setAttribute('style', 'display:none');
-          waitingElement.setAttribute('style', 'display:block');
-
-          Settings.getAddress(function (address) {
-
-            var req = {
-              method: 'GET',
-              url: address,
-              headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-              }
-            };
-
-            $http(req).then(function(value){
-              console.log(JSON.stringify(value));
-              SensorsInfoService.notify(value.data);
-              errorElement.setAttribute('style', 'display:none');
-              waitingElement.setAttribute('style', 'display:none');
-            }, function(error){
-              console.log(error);
-              errorElement.setAttribute('style', 'display:block');
-              waitingElement.setAttribute('style', 'display:none');
-            })
-          });
-        }, miliseconds);
+        window.setInterval(intervalAction, miliseconds);
     });
   });
+
+  var intervalAction = function(){
+    var parentElement = document.getElementById('notifier');
+    var waitingElement = parentElement.querySelector('.waiting');
+    var errorElement = parentElement.querySelector('.error');
+
+    errorElement.setAttribute('style', 'display:none');
+    waitingElement.setAttribute('style', 'display:block');
+
+    Settings.getAddress(function (address) {
+
+      var req = {
+        method: 'GET',
+        url: address
+      };
+
+      $http(req).then(function(value){
+        SensorsInfoService.notify(value.data);
+        errorElement.setAttribute('style', 'display:none');
+        waitingElement.setAttribute('style', 'display:none');
+      }, function(error){
+        console.log(error);
+        errorElement.setAttribute('style', 'display:block');
+        waitingElement.setAttribute('style', 'display:none');
+      })
+    });
+  };
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
